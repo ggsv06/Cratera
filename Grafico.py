@@ -18,10 +18,10 @@ config_plt = {
 }
 plt.style.use([config_plt])
 
-x = np.array([...])
-y = np.array([...])
-u_x = np.array([...])
-u_y = np.array([...])
+x = np.array(Lista_kg)
+y = np.array(Lista_Dg)
+u_x = np.array(Lista_ukg)
+u_y = np.array(Lista_ud)
 
 result = stats.linregress(x, y)
 
