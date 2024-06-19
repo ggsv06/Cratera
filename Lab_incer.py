@@ -20,7 +20,7 @@ mg = 4.7/1000
 mn = 16.3/1000
 
 
-# Dados experimentais e tabelas bases. Obs: Diâmetros Dg, Dn estão em cm ; Alturas em m
+# Dados experimentais e tabelas bases. Obs: Diâmetros Dg, Dn estão em cm ; Alturas em c
 
 Alturas = [0.02, 0.04, 0.08, 0.16, 0.32, 0.64, 1.00, 1.28, 1.50]
 
