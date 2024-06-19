@@ -127,7 +127,9 @@ while True:
     c="b",
     ecolor="black",
   )
-  ax3.plot(x, x * result.slope + result.intercept)
+  if escolha == str(4) or escolha == str(5) or escolha == str(6):
+    ax3.plot(x, x * result.slope + result.intercept)
+
   ax3.set_xlabel(f"Energia ({unidade_x})")
   ax3.set_ylabel(f"Diâmetro ({unidade_y})")
   plt.show()
