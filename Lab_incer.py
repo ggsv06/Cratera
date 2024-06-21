@@ -24,8 +24,16 @@ mn = 16.3/1000
 
 Alturas = [0.02, 0.04, 0.08, 0.16, 0.32, 0.64, 1.00, 1.28, 1.50]
 
-Lista_Dg = [1.8, 1.9, 2.3, 2.9, 3.8, 4.2, 5.0, 5.0, 6.0]
-Lista_Dn = [3.0, 3.6, 3.8, 4.3, 4.7, 6.0, 5.5, 6.0, 7.5]
+Lista_Dg1 = [2.0,2.0,2.0,3.0,4.0,4.0,5.0,5.0,6.0]
+Lista_Dg2 = [1.5,1.7,2.5,2.7,3.6,4.3,5.0,5.0,6.0]
+Lista_Dn1 = [3.0,3.5,3.9,4.0,4.5,6.0,5.0,6.0,8.0]
+Lista_Dn2 = [3.0,3.7,3.6,4.5,5.0,6.0,6.0,6.0,7.0]
+
+Lista_Dgm = [1.8, 1.9, 2.3, 2.9, 3.8, 4.2, 5.0, 5.0, 6.0]
+Lista_Dnm = [3.0, 3.6, 3.8, 4.3, 4.7, 6.0, 5.5, 6.0, 7.5]
+
+Lista_ucomdesvio_g = []
+Lista_ucomdesvio_n = []
 
 Lista_LogDg = []
 Lista_uLogDg = []
@@ -45,6 +53,7 @@ Lista_Logkn = []
 Lista_uLogkn = []
 
 
+    
 
 
 # Incertezas de instrumentos
@@ -57,11 +66,26 @@ uh = ((uparalaxe)**2+(uhzero)**2)**(1/2)
 
 udtolerancia = (0.1/(2*(6)**(1/2)))/100
 
-ud = ((uparalaxe)**2+(udtolerancia)**2)**(1/2)
-Lista_ud = len(Lista_Dg)*[ud]
+for x1 , x2 , xm in zip(Lista_Dg1 , Lista_Dg2 , Lista_Dgm):
+    
+    sigma = ((xm-x1)**2+(xm-x2)**2)**(1/2)
+    ud_desvio_padrao = ((sigma)/(2)**(1/2))/100
+    udsigcom = ((uparalaxe)**2+(ud_desvio_padrao)**2)**(1/2)
+    Lista_ucomdesvio_g.append(udsigcom)
+
+for x1 , x2 , xm in zip(Lista_Dn1 , Lista_Dn2 , Lista_Dnm):
+    
+    sigma = ((xm-x1)**2+(xm-x2)**2)**(1/2)
+    ud_desvio_padrao = ((sigma)/(2)**(1/2))/100
+    udsigcom = ((uparalaxe)**2+(ud_desvio_padrao)**2)**(1/2)
+    Lista_ucomdesvio_n.append(udsigcom)
+
+
+
+
 
 print("\n################################################################################################################################")
-print(f"\nIncertezas puras da massa em, altura e diâmetro da cratera são respectivamentes:\t {um*1000:.2f} g\t {uh*100:.1f} cm\t {ud*100:.1f} cm")
+print(f"\nIncertezas puras da massa e altura da cratera são respectivamentes:\t {um*1000:.2f} g\t {uh*100:.1f} cm")
 
 
 
@@ -94,13 +118,13 @@ for i in Alturas:
 
 # Cálculo de logaritmos dos diâmetros da bolinha de gudi
 
-print(f"\nLogaritmos dos diâmetros (+/-{ud:.3f})bolinha de gudi")
+print(f"\nLogaritmos dos diâmetros bolinha de gudi")
 print('\nDiâmetro(cm)\tLog\t\tIncerteza Log')
 
-for i in Lista_Dg:
+for i, j in zip(Lista_Dgm, Lista_ucomdesvio_g):
     
     logDg = np.log10(i)
-    ulogDg = ulog(i, ud)
+    ulogDg = ulog(i, j)
     print(f'{i:.1f}\t\t{logDg:.2f}\t\t+/- {ulogDg:.4f}')
     Lista_LogDg.append(logDg)
     Lista_uLogDg.append(ulogDg)
@@ -108,13 +132,13 @@ for i in Lista_Dg:
 
 # Cálculo de logaritmos dos diâmetros da bolinha de neodímio
 
-print(f"\nLogaritmos dos diâmetros (+/- {ud:.3f}) bolinha de neodímio")
+print(f"\nLogaritmos dos diâmetros bolinha de neodímio")
 print('\nDiâmetro(cm)\tLog\t\tIncerteza Log')
 
-for i in Lista_Dn:
+for i, j in zip(Lista_Dnm, Lista_ucomdesvio_n):
 
     logDn = np.log10(i)
-    ulogDn = ulog(i, ud)
+    ulogDn = ulog(i, j)
     print(f'{i:.1f}\t\t{logDn:.2f}\t\t+/- {ulogDn:.4f}')
     Lista_LogDn.append(logDn)
     Lista_uLogDn.append(ulogDn)

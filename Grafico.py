@@ -34,27 +34,27 @@ while True:
   try:
     if escolha == str(1):
       Lx = Lista_kg
-      Ly = Lista_Dg
+      Ly = Lista_Dgm
       Lux = Lista_ukg
-      Luy = Lista_ud
+      Luy = Lista_ucomdesvio_g
 
       unidade_x = "10^-3 J"
       unidade_y = "cm"
     
     elif escolha == str(2):
       Lx = Lista_kn
-      Ly = Lista_Dn
+      Ly = Lista_Dnm
       Lux = Lista_ukn
-      Luy = Lista_ud
+      Luy = Lista_ucomdesvio_n
       
       unidade_x = "10^-3 J"
       unidade_y = "cm"
 
     elif escolha == str(3):
       Lx = Lista_kg + Lista_kn
-      Ly = Lista_Dg + Lista_Dn
+      Ly = Lista_Dgm + Lista_Dnm
       Lux = Lista_ukg + Lista_ukn
-      Luy = 2*Lista_ud
+      Luy = Lista_ucomdesvio_g + Lista_ucomdesvio_n
 
       unidade_x = "10^-3 J"
       unidade_y = "cm"
