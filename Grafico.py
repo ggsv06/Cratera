@@ -22,10 +22,10 @@ plt.style.use([config_plt])
 while True:
   escolha = input('''
         \nQual tipo de gráfico deseja? Digite 
-        [1] Gudi; D x E
+        [1] Gude; D x E
         [2] Neodímio; D x E
         [3] Ambas bolinhas; D x E
-        [4] Gudi; Log(D) x Log(E)
+        [4] Gude; Log(D) x Log(E)
         [5] Neodímio; Log(D) x Log(E)
         [6] Ambas bolinhas; Log(D) x Log(E)
         [7] Sair

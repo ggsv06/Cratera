@@ -15,7 +15,7 @@ def ulog(x, ux):
     ufinal = ux/(x*np.log(10))
     return ufinal
 
-# Massas das bolinhas de gudi e neodímio em Kg. Numerador em gramas é transformado para Kg dividindo por 1000
+# Massas das bolinhas de gude e neodímio em Kg. Numerador em gramas é transformado para Kg dividindo por 1000
 mg = 4.7/1000
 mn = 16.3/1000
 
@@ -87,11 +87,24 @@ for x1 , x2 , xm in zip(Lista_Dn1 , Lista_Dn2 , Lista_Dnm):
 print("\n################################################################################################################################")
 print(f"\nIncertezas puras da massa e altura da cratera são respectivamentes:\t {um*1000:.2f} g\t {uh*100:.1f} cm")
 
+# Cálculo das incertezas dos diâmetros da bolinha de gude
+print("\n\nCálculo das incertezas dos diâmetros da bolinha de gude por estatística")
+print("\nh(cm)\tDiâmetros médios (cm)\tIncerteza (cm)\n")
+
+for i, j, k in zip(Alturas, Lista_Dgm, Lista_ucomdesvio_g):
+    print(f"{i*100}\t\t{j:.1f}\t\t+/- {k*100:.1f}")
 
 
+# Cálculo das incertezas dos diâmetros da bolinha de neodímeo
+print("\n\nCálculo das incertezas dos diâmetros da bolinha de neodímio por estatística")
+print("\nh(cm)\tDiâmetros médios (cm)\tIncerteza (cm)\n")
 
-# Cálculo da energia cinética da bolinha de gudi em 10^-3 J. Kg: Energia cinética gudi; ukgn: Incerteza de Kg
-print("\n\nEnergia cinética de gudi em J 10^-3")
+for i, j, k in zip(Alturas, Lista_Dnm, Lista_ucomdesvio_n):
+    print(f"{i*100}\t\t{j:.1f}\t\t+/- {k*100:.1f}")
+
+
+# Cálculo da energia cinética da bolinha de gude em 10^-3 J. Kg: Energia cinética gude; ukgn: Incerteza de Kg
+print("\nEnergia cinética de gude em J 10^-3")
 print("\nh(cm)\tEnergia média (J 10^-3)\tIncerteza\n")
 
 for i in Alturas:
@@ -116,9 +129,9 @@ for i in Alturas:
     Lista_kn.append(kn)
     Lista_ukn.append(ukn)
 
-# Cálculo de logaritmos dos diâmetros da bolinha de gudi
+# Cálculo de logaritmos dos diâmetros da bolinha de gude
 
-print(f"\nLogaritmos dos diâmetros bolinha de gudi")
+print(f"\nLogaritmos dos diâmetros bolinha de gude")
 print('\nDiâmetro(cm)\tLog\t\tIncerteza Log')
 
 for i, j in zip(Lista_Dgm, Lista_ucomdesvio_g):
@@ -144,9 +157,9 @@ for i, j in zip(Lista_Dnm, Lista_ucomdesvio_n):
     Lista_uLogDn.append(ulogDn)
 
 
-# Cálculo de logaritmos das energias da bolinha de gudi
+# Cálculo de logaritmos das energias da bolinha de gude
 
-print("\nLogaritmos das energias da bolinha de gudi")
+print("\nLogaritmos das energias da bolinha de gude")
 print('\nEnergia(J 10^-3)\tLog\t\tIncerteza Log')
 
 for i, u in zip(Lista_kg, Lista_ukg):
